@@ -89,7 +89,7 @@ def registration_request(request):
             User.objects.get(username=username)
             user_exist = True
         except:
-            # If not, simply log this is a new user
+            # If not, simply log this as a new user
             logger.debug("{} is new user".format(username))
         # If it is a new user
         if not user_exist:
@@ -98,7 +98,7 @@ def registration_request(request):
                                             last_name=last_name, password=password)
             # Login the user and redirect to course list page
             login(request, user)
-            return redirect("/djangoapp/index.html")
+            return redirect('/djangoapp/')
         else:
             return render(request, 'djangoapp/registration.html', context)
 

@@ -102,9 +102,8 @@ def get_dealerships(request):
     context={}
     if request.method == "GET":
         url = "https://us-south.functions.appdomain.cloud/api/v1/web/766b3915-15d5-45c7-8f52-923c0d5ccd7d/dealership-package/get-dealership"
-        dealerships = get_dealers_from_cf(url)
-        context["dealership_list"] = dealerships
-        print(context["dealership_list"])
+        context["dealerships"] = get_dealers_from_cf(url)
+        print(context["dealerships"])
         return render(request, 'djangoapp/index.html', context)
 
 def get_dealer_details(request, dealer_id):
@@ -112,7 +111,7 @@ def get_dealer_details(request, dealer_id):
     context = {}
     if request.method == "GET":
         url = 'https://us-south.functions.appdomain.cloud/api/v1/web/766b3915-15d5-45c7-8f52-923c0d5ccd7d/dealership-package/get-review'
-        context = {"reviews":  get_dealer_reviews_rom_cf(url, dealer_id)}
+        context["reviews"]= get_dealer_reviews_rom_cf(url, dealer_id)
         return render(request, 'djangoapp/dealer_details.html', context)
 
 def add_review(request, dealer_id):
@@ -125,6 +124,7 @@ def add_review(request, dealer_id):
         #            "dealers": restapis.get_dealers_from_cf(url),
         #            }
         return render(request, 'djangoapp/add_review.html', context)
+        
     if request.method == "POST":
         if request.user.is_authenticated:
             form = request.POST

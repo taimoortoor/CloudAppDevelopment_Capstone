@@ -3,9 +3,9 @@ from ibmcloudant.cloudant_v1 import CloudantV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
 def main(dict):
-    authenticator = IAMAuthenticator("81kdYMLFWmGdUTWq-c1u1E7eRCZfNsS6GDbHzxKYsEDk")
+    authenticator = IAMAuthenticator("Kz8ISOe7LOYJkYWm5F7OnqJySEaBCcwZeFhfiGXHFxUA")
     service = CloudantV1(authenticator=authenticator)
-    service.set_service_url("https://7e800cf5-b1ca-42c0-a086-0f972ad89906-bluemix.cloudantnosqldb.appdomain.cloud")
+    service.set_service_url("https://71f0e457-5637-459c-aa20-4bc14b12b27c-bluemix.cloudantnosqldb.appdomain.cloud")
     response = service.post_document(db='reviews', document={'review': dict['review']}).get_result()
     try:
         result= {

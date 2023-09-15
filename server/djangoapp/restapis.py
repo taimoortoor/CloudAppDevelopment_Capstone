@@ -48,7 +48,7 @@ def get_dealers_from_cf(url, **kwargs):
         for dealer in dealerships:
 
             if "doc" in dealer and "address" in dealer["doc"]:
-                dealer_doc = dealer["doc"]
+                dealer_doc = dealer
                 # Create a CarDealer object with values from the dealer document
 
                 dealer_obj = CarDealer(

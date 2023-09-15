@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 # from .models import related models
-from .restapis import get_dealers_from_cf, get_dealer_reviews_from_cf
+from .restapis import get_request, get_dealers_from_cf, get_dealer_reviews_from_cf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -101,7 +101,7 @@ def registration_request(request):
 def get_dealerships(request):
     context={}
     if request.method == "GET":
-        url = "https://us-south.functions.appdomain.cloud/api/v1/web/766b3915-15d5-45c7-8f52-923c0d5ccd7d/dealership-package/get-dealership"
+        url = "https://taimoortoor-3000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
         context["dealerships"] = get_dealers_from_cf(url)
         print(context["dealerships"])
         return render(request, 'djangoapp/index.html', context)

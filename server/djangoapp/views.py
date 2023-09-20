@@ -101,7 +101,7 @@ def registration_request(request):
 def get_dealerships(request):
     context={}
     if request.method == "GET":
-        url = "https://taimoortoor-3000.theiadocker-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
+        url = "https://taimoortoor-3000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
         context["dealerships"] = get_dealers_from_cf(url)
         print(context["dealerships"])
         return render(request, 'djangoapp/index.html', context)
@@ -110,7 +110,7 @@ def get_dealer_details(request, dealer_id):
     '''displays dealer details info for the dealership'''
     context = {}
     if request.method == "GET":
-        url = 'https://us-south.functions.appdomain.cloud/api/v1/web/766b3915-15d5-45c7-8f52-923c0d5ccd7d/dealership-package/get-review'
+        url = 'https://taimoortoor-3000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get'
         context["reviews"]= get_dealer_reviews_rom_cf(url, dealer_id)
         return render(request, 'djangoapp/dealer_details.html', context)
 
